@@ -13,7 +13,6 @@ def pal_two(n):
         palindrome += str_n[-i]
 
     return n == int(palindrome)
- 
     
 print(pal_two(112211))
 
