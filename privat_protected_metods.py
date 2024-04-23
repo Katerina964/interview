@@ -15,9 +15,13 @@ class Pet:
         self._protected_method()
         self.__privat_method()
 
+    def __str__(self):
+        return print("PET")
+
 pet = Pet("Babe", 3)
 pet.call_privat_protected_methods()  # protected method  privat method 
 pet._protected_method() # protected method
+pet.__str__() # available
 
 # call with new method_name
 pet._Pet__privat_method() # privat method
