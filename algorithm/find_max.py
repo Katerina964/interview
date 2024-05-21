@@ -9,9 +9,10 @@ def find_max_value(a, b, c,):
 
 print(find_max_value(5, 4, 3))
 
-# between n values
+# between values
 def find_max_value_n(numbers):
-    max_value = numbers[0]
+    max_value = numbers[0] if numbers else "you passed emty list"
+    
     for num in numbers:
         if num > max_value:
             max_value = num

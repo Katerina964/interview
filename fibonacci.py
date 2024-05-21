@@ -20,3 +20,17 @@ def fib_rec(length,  fib_list, start=2):
 
 print(fib_rec(15,  fib_list, start=2))
 print(fib_list)
+
+def fib_1(length):
+    result = [0, 1]
+    a = 0
+    b = 1
+    for each  in range(length-2):
+        a, b = b, b + a
+        result.append(b)
+    return result
+
+print(fib_1(15))
+    
+
+
