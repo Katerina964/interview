@@ -18,9 +18,10 @@ print(pal_two(112211))
 
 
 def pal_three(n):
-    palindrome = int(str(n)[::-1])
+    return int(str(n)[::-1]) == n
 
-    return n == palindrome
+def pal_five(n):    
+    return str(n) == str(n)[::-1]
 
 print(pal_three(333334))
 
@@ -37,14 +38,12 @@ def pal_for(n):
     
 print(pal_for(11122111))
 
-def pal(a):
-    c = a
-    b = 0
-
-    while c >= 1:
-        b = (b + c % 10) * 10
-        c = c // 10
-
-    return a == b / 10
+def pal(n):
+    str_pal = ""
+    str_n = str(n)
+    while n > 0:
+        str_pal += str(n % 10)
+        n //= 10
+    return str_pal == str_n
 
 print(pal(333))
