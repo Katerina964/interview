@@ -1,3 +1,4 @@
+
 class Pet:
     def __init__(self, name, age):
         self.name = name
@@ -17,15 +18,15 @@ class Pet:
 
     def __str__(self):
         return print("PET")
-
+# 
 pet = Pet("Babe", 3)
-pet.call_privat_protected_methods()  # protected method  privat method 
+# pet.call_privat_protected_methods()  # protected method  privat method 
 pet._protected_method() # protected method
-pet.__str__() # available
+# pet.__str__() # available
 
-# call with new method_name
-pet._Pet__privat_method() # privat method
-print(pet._Pet__privat_attribute)
+# # call with new method_name
+# pet._Pet__privat_method() # privat method
+# print(pet._Pet__privat_attribute)
 
 # Pet.__privat_method() #type object 'Pet' has no attribute '__privat_method'
 
@@ -40,5 +41,8 @@ class Cat(Pet):
         print("hello")
 
 cat = Cat("Businka", 4, "white")
-print(cat.name)
-print(cat._Pet__privat_attribute)
+# print(cat.name)
+print(cat._Pet__privat_attribute) # available 
+cat._protected_method() # available
+
+

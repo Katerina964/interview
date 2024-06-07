@@ -1,44 +1,56 @@
-def fib_slice(n):
-    fib_list = [1, 2]
-    for each in range(2, n):
-        fib_list.append(fib_list[-1] + fib_list[-2])
 
-    return fib_list
-
-def fib(n):
-    a = 1
-    b = 2
-    fib_list = [1, 2]
-    for eacn in range(2, n):
-        a, b = b, a + b
-        fib_list.append(b)
-    return fib_list    
+def anagr(first_string: str, second_str: str):
+    return first_string == second_str[::-1]
 
 
-def fib_rec(n, start=2, a=1, b=2, fib_list = [1, 2]):
-    if start == n:
-        return fib_list
-    a, b = b, a + b
-    fib_list.append(b)
-    start +=1
-    return fib_rec(n, start, a, b, fib_list)
+def count_substring(original_str: str, sub_string: str):
+    return original_str.count(sub_string)
 
-# print(fib_slice(5))
-# print(fib(5))
-# print(fib_rec(5))
+print(anagr("mrmr", "rmrm"))
+print(count_substring("abababababab", "ab"))
 
-def pal(n):
-    return str(n) == str(n)[::-1]
 
-def pal_one(n):
-    str_pal = ""
-    str_n = str(n)
-    while n > 0:
-        str_pal += str(n % 10)
-        n //= 10
-    return str_pal == str_n
+def greatest_divisor(n: int):
+    for i in range(1, n):
+        if n % i == 0:
+            divisor = i
+    return divisor         
 
-print(pal_one(1122113))
+def greatest_disisors(n: list):
+    divisor_list = []
+    for each in n:
+        divisor_list.append(greatest_divisor(each))
 
+    return divisor_list
+
+print(greatest_disisors([4, 9, 11]))
+
+
+def divisor_set(n: int):
+    divisors = {1}
+    for i in range(2, n+1):
+        if n % i == 0:
+            divisors.add(i)
+
+    return divisors
+
+def greatest_common_divisor(n):
+    result_list = []
+    for each in n:
+        result_list.append(divisor_set(each))
+
+    common_divisors = result_list[0]
+    for each in result_list:
+        common_divisors &= each
+       
+    return max(common_divisors)
+
+
+print(greatest_common_divisor([15, 70, 10, 5]))
+
+
+
+
+        
 
 

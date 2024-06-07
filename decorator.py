@@ -1,3 +1,18 @@
+def decorator_hello(func):
+    print("I am hello from outer func ")
+    def inner(name, *args, **kwargs):
+        func(name)
+        return f"I am NEW result, {name}"
+    return inner
+
+@decorator_hello
+def hello(name):
+    return f"I am OLD result, {name}"
+
+
+print(hello("Kate"))
+
+
 def decorator_example(func):
     print("example")
     c = 1

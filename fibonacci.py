@@ -18,21 +18,20 @@ def fib_rec(length,  fib_list, start=2):
     else:
         return fib_list 
     
-def fib_rec(n, start=2, a=1, b=2, fib_list = [1, 2]):
-    if start == n:
+def fib_rec(n, a=0, b=1, fib_list=[0, 1]):
+
+    if len(fib_list) == n:
         return fib_list
+
     a, b = b, a + b
     fib_list.append(b)
-    start +=1
-    return fib_rec(n, start, a, b, fib_list)
+    return fib_rec(n, a, b, fib_list)
 
-print(fib_rec(15,  fib_list, start=2))
+print(fib_rec(15))
 print(fib_list)
 
-def fib(n):
-    a = 1
-    b = 2
-    fib_list = [1, 2]
+def fib(n, a=0, b=1):
+    fib_list = [a, b]
     for eacn in range(2, n):
         a, b = b, a + b
         fib_list.append(b)
