@@ -65,4 +65,3 @@ def function(name, message ='Hello'):
     print("{}, {}".format(message, name))
  
 function("geeks_for_geeks", "hello")
-
