@@ -19,7 +19,6 @@ def greatest_common_divisor(n):
 
 print(greatest_common_divisor([15, 70, 10, 5]))
 
-
 def greatest_divisor(n: int):
     for i in range(1, n):
         if n % i == 0:

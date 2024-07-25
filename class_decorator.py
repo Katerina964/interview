@@ -49,11 +49,12 @@ class MyDecorator:
         self.function = function
      
     def __call__(self, *args, **kwargs):
- 
+       
         # We can add some code 
         # before function call
- 
-        self.function(*args, **kwargs)
+        self.function(*args, **kwargs) # for class func add self like first param
+        return "from class decorator"
+        
  
         # We can also add some code
         # after function call.
@@ -63,5 +64,17 @@ class MyDecorator:
 @MyDecorator
 def function(name, message ='Hello'):
     print("{}, {}".format(message, name))
+    return "return from function"
  
-function("geeks_for_geeks", "hello")
+print(function("geeks_for_geeks", "hello"))
+
+
+# class Animal:
+
+#     @MyDecorator
+#     def hello(self):
+#         print("animal_hello")
+#         return "hello from animal.hello"
+    
+# animal = Animal()
+# print(animal.hello())

@@ -1,68 +1,25 @@
-from datetime import datetime
-from os import path
-import json
+square_values = [[8, 1, 6], [3, 5, 7], [4, 9, 2]]
 
 
-def check_cach(func):
-    def wrapper(self, *agrs, **kwargs):
-        if path.isfile("pet_cach.py"):
-            time_dif = (
-                datetime.now() - datetime.fromtimestamp(path.getmtime("pet_cach.py"))
-            ).days
-            if time_dif < 1:
-                with open("pet_cach.py", "r") as cach_file:
-                    result = json.load(cach_file)
-            else:
-                with open("pet_cach.py", "w") as cach_file: # TODO create func write cach
-                    result = (
-                        f"I am result from decorator func, {func(self)} {datetime.now()}"
-                    )
-                    cach_file.write(json.dumps(result))
+def is_magic_square(square_values):
+    total_dict = {str(x): [] for x in range(len(square_values))}
+    total_dict.update({"diagonal_1": [], "diagonal_2": []})
 
-        else:
-            with open("pet_cach.py", "w") as cach_file:
-                result = (
-                    f"I am result from decorator func, {func(self)} {datetime.now()}"
-                )
-                cach_file.write(json.dumps(result))
-        return result
+    for row_index, row in enumerate(square_values):
+        for elem_index, elem in enumerate(row):
+            total_dict[str(elem_index)].append(elem)
+            if row_index == elem_index:
+                total_dict["diagonal_1"].append(elem)
 
-    return wrapper
+        for elem_index, elem in enumerate(reversed(row)):
+            if row_index == elem_index:
+                total_dict["diagonal_2"].append(elem)
+    result = {sum(x) for x in square_values}
+
+    for key, value in total_dict.items():
+        result.add(sum(value))
+
+    return len(result) == 1
 
 
-class Pet:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-    @check_cach
-    def pet_info(self):
-        return f"I am {self.name}, I am {self.age} years old."
-
-
-pet = Pet("Babe", 3)
-print(pet.pet_info())
-
-
-class MyDecorator:
-    def __init__(self, function):
-        self.function = function
-     
-    def __call__(self, *args, **kwargs):
- 
-        # We can add some code 
-        # before function call
- 
-        self.function(*args, **kwargs)
- 
-        # We can also add some code
-        # after function call.
-     
- 
-# adding class decorator to the function
-@MyDecorator
-def function(name, message ='Hello'):
-    print("{}, {}".format(message, name))
- 
-function("geeks_for_geeks", "hello")
-
+print(is_magic_square(square_values))

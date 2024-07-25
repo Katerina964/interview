@@ -29,7 +29,7 @@ def say(name):
 # say("David")
 
 y = decorator_example(say)
-y("David")
+print(y("David"))
 
 
 decorator_example(say)("David")

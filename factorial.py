@@ -4,7 +4,7 @@ def factorial(n):
         result *= i
     return result
 
-print (factorial(11))
+print (factorial(5))
 
 def factorial_rec(n,  result=1, next_param=1):
     if next_param > n:
